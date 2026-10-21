@@ -275,7 +275,29 @@ function ProjectDetail({ projectKey, openDoc, go }) {
           <section className="content-section"><div className="eyebrow">LEARNINGS</div><h2>项目思考与边界</h2><p>当前项目以 MVP 验证为目标。展示时应区分已实现功能、测试中发现的问题与后续规划，不将计划中的能力描述为现有能力。</p></section>
         </article>
         <aside className="detail-aside">
-          <div className="aside-card"><h3>项目材料</h3><p>在当前网站中直接阅读</p>{data.docs.map(([key,label])=><button className="aside-doc" key={key} onClick={() => openDoc(key)}><FileText size={16}/><span>{label}</span><ArrowUpRight size={14}/></button>)}</div>
+          <div className="aside-card"><h3>项目材料</h3><p>在当前网站中直接阅读</p>
+{data.docs.map(([key, label]) => (
+  <button
+    className="aside-doc"
+    key={key}
+    onClick={() => {
+      if (key === 'analysis') {
+        window.open(
+          `${import.meta.env.BASE_URL}product-analysis.html`,
+          '_blank',
+          'noopener,noreferrer'
+        );
+      } else {
+        openDoc(key);
+      }
+    }}
+  >
+    <FileText size={16} />
+    <span>{label}</span>
+    <ArrowUpRight size={14} />
+  </button>
+))}
+</div>
           <div className="aside-card aside-note"><Sparkles size={18}/><h3>产品原则</h3><p>以真实用户问题为起点，用可运行的 MVP 验证方案，并如实呈现能力边界。</p></div>
           <div className="aside-card"><h3>代码与 Demo</h3><p>部署前请在此处补充真实 GitHub 仓库、在线 Demo 或运行说明链接。</p><span className="placeholder-link"><Code2 size={15}/> GitHub 链接待补充</span></div>
         </aside>
