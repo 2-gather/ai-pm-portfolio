@@ -1,7 +1,4 @@
 # AI Product Portfolio
-
-一个使用 React + Vite 构建的中文 AI 产品经理作品集网站模板。
-
 ## 当前包含
 
 - 作品集首页
